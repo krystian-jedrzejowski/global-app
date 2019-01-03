@@ -16,6 +16,7 @@ require 'models/tester_model'
 TesterWork = PageObjects::TesterWork::Pages
 Mailinator = PageObjects::Mailinator::Pages
 
+Dir[File.expand_path('support/**/*.rb')].each { |f| require f }
 Dir[File.expand_path('spec/scenarios/*.rb')].each { |f| require f }
 Dir[File.expand_path('spec/shared_examples/*.rb')].each { |f| require f }
 
@@ -26,22 +27,7 @@ AllureRSpec.configure do |config|
   config.clean_dir  = true
 end
 
-capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
-capabilities['url'] = 'http://localhost:4444/wd/hub'
-
-Capybara.register_driver :remote_browser do |app|
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    desired_capabilities: capabilities
-  )
-end
-
-Capybara.configure do |config|
-  config.default_driver = :remote_browser
-  config.javascript_driver = :remote_browser
-  config.default_max_wait_time = 5
-end
+DriverHelper.new.initialize_driver(ENV['DRIVER'])
 
 RSpec.configure do |config|
   config.include AllureRSpec::Adaptor
