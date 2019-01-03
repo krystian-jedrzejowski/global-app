@@ -2,6 +2,9 @@ module PageObjects::TesterWork
   class Page < SitePrism::Page
     load_validation { [displayed?, "Expected #{current_url} to match #{url_matcher} but it did not."] }
 
+    SELECT_BY_LABEL_NAME_XPATH_1 = "//label/span[contains(text(),'%s')]/../..".freeze
+    SELECT_BY_LABEL_NAME_XPATH_2 = "//label/span/p[contains(text(),'%s')]/../../..".freeze
+
     def self.url
       "#{Settings.testerwork_url}#{@url}"
     end

@@ -1,0 +1,97 @@
+#https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 300
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+Metrics/ParameterLists:
+  Enabled: true
+  CountKeywordArgs: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Style/DoubleNegation:
+  Enabled: false
+
+Naming/PredicateName:
+  NamePrefix:
+    - is_
+    - has_
+
+  NamePrefixBlacklist:
+    - is_
+    - has_
+
+Metrics/AbcSize:
+  Max: 40
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Documentation:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - lib/page_objects_dsl.rb
+
+Style/AsciiComments:
+  Enabled: false
+
+Layout/TrailingBlankLines:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+Style/GuardClause:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/TrivialAccessors:
+  Enabled: false
+
+Layout/IndentArray:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/IndentHash:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  AutoCorrect: false
+  EnforcedStyle: compact

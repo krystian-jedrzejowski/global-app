@@ -4,8 +4,6 @@ module PageObjects::TesterWork::Pages
 
     section :navigation, NavigationSection
 
-    SELECT_XPATH = "//label/span[contains(text(),'%s')]/../.."
-
     element :first_name_input, 'input[name=first_name]'
     element :last_name_input, 'input[name=last_name]'
     element :birthday_input, 'input[name=birthday]'
@@ -14,11 +12,14 @@ module PageObjects::TesterWork::Pages
     element :payout_input, 'input[name=payout_method_identifier]'
     element :continue_button, 'button', text: 'Continue'
 
-    section :country_selection, SelectSection, :xpath, "//label/span/p[contains(text(),'Country')]/../../.."
-    section :communication_selection, SelectSection, :xpath, format(SELECT_XPATH,'Preferred Communication Method')
-    section :payout_selection, SelectSection, :xpath, format(SELECT_XPATH,'Payout method')
+    section :country_selection, SelectSection,
+            :xpath, format(SELECT_BY_LABEL_NAME_XPATH_2, 'Country')
+    section :communication_selection, SelectSection,
+            :xpath, format(SELECT_BY_LABEL_NAME_XPATH_1, 'Preferred Communication Method')
+    section :payout_selection, SelectSection,
+            :xpath, format(SELECT_BY_LABEL_NAME_XPATH_1, 'Payout method')
 
-    section :gender_selection, :xpath, format(SELECT_XPATH,'Gender')do
+    section :gender_selection, :xpath, format(SELECT_BY_LABEL_NAME_XPATH_1, 'Gender') do
       element :expand_selection, 'div.Select'
       elements :options, '.Select-menu>.Select-option'
 

@@ -3,10 +3,9 @@ require_relative './select_section'
 class DesktopDevicesSection < SitePrism::Section
   set_default_search_arguments '#hardware-and-software-tabs-pane-1'
 
-  SELECT_XPATH = "//label/span[contains(text(),'%s')]/../.."
+  SELECT_XPATH = "//label/span[contains(text(),'%s')]/../..".freeze
 
   element :add_device_button, :xpath, "//button[contains(text(), 'Add another desktop device')]"
-
   section :os_selection, SelectSection, :xpath, format(SELECT_XPATH, 'Operating System')
   element :save_button, 'button', text: 'Save'
   element :cancel_button, 'button', text: 'Cancel'
@@ -17,8 +16,8 @@ class DesktopDevicesSection < SitePrism::Section
     element :delete_button, 'button>.fa-trash'
   end
 
-  def find(os)
-    os_items.find { |os_item| os_item.name.text.eql? os}
+  def find(operating_system)
+    os_items.find { |os_item| os_item.name.text.eql? operating_system }
   end
 
   def add(os_name)

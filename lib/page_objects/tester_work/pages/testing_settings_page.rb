@@ -2,13 +2,12 @@ module PageObjects::TesterWork::Pages
   class TestingSettingsPage < PageObjects::TesterWork::Page
     set_url '/tester-account/registration/testing-settings'
 
-    SELECT_XPATH = "//label/span[contains(text(),'%s')]/../.."
-
     section :navigation, NavigationSection
 
     element :continue_button, 'button', text: 'Continue'
 
-    section :testing_preferences, :xpath, "//label/span/p[contains(text(),'Testing preferences')]/../../.."do
+    section :testing_preferences,
+            :xpath, format(SELECT_BY_LABEL_NAME_XPATH_2, 'Testing preferences') do
       elements :checkboxes, '.button-checkboxes>label'
 
       def select(preference)
@@ -16,7 +15,8 @@ module PageObjects::TesterWork::Pages
       end
     end
 
-    section :language_selection, SelectSection, :xpath, format(SELECT_XPATH,'Native language')
+    section :language_selection, SelectSection,
+            :xpath, format(SELECT_BY_LABEL_NAME_XPATH_1, 'Native language')
 
     load_validation { has_testing_preferences? }
 

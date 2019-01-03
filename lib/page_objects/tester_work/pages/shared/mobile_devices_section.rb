@@ -3,7 +3,7 @@ require_relative './select_section'
 class MobileDevicesSection < SitePrism::Section
   set_default_search_arguments '#hardware-and-software-tabs-pane-2'
 
-  SELECT_XPATH = "//label/span[contains(text(),'%s')]/../.."
+  SELECT_XPATH = "//label/span[contains(text(),'%s')]/../..".freeze
 
   element :add_device_button, :xpath, "//button[contains(text(), 'Add another device')]"
 
@@ -21,14 +21,14 @@ class MobileDevicesSection < SitePrism::Section
   end
 
   def find(manufacturer, model)
-    device_items.find { |device_item| device_item.name.text.eql? "#{manufacturer} #{model}"}
+    device_items.find { |device_item| device_item.name.text.eql? "#{manufacturer} #{model}" }
   end
 
-  def add(manufacturer, model, os)
+  def add(manufacturer, model, operating_system)
     add_device_button.click
     manufacturer_selection.send_keys manufacturer
     model_selection.send_keys model
-    os_selection.send_keys os
+    os_selection.send_keys operating_system
     save_button.click
   end
 

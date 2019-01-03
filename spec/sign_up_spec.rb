@@ -1,10 +1,10 @@
 require_relative './spec_helper'
 
 feature 'SignUp' do
-  CONFIRM_EMAIL_TEXT = 'Please confirm your email address for Tester Work'
-  VERIFY_EMAIL_SUBJECT = 'Please verify your email address'
+  CONFIRM_EMAIL_TEXT = 'Please confirm your email address for Tester Work'.freeze
+  VERIFY_EMAIL_SUBJECT = 'Please verify your email address'.freeze
   CONFIRMED_ACCOUNT_MSG = 'Your email address %s has been confirmed. '\
-    'Please log in to complete your account setup.'
+    'Please log in to complete your account setup.'.freeze
 
   let(:tester) { TesterModel.new.with_random_data }
 

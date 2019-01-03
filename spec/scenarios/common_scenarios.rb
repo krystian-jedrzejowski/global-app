@@ -1,7 +1,7 @@
 module CommonScenarios
   extend RSpec::SharedContext
 
-  VERIFY_EMAIL_SUBJECT = 'Please verify your email address'
+  VERIFY_EMAIL_SUBJECT = 'Please verify your email address'.freeze
 
   def sign_up(tester)
     visit_page TesterWork::SignUpPage do

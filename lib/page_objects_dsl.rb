@@ -6,7 +6,7 @@ module PageObjects
       end
 
       def evaluate(&block)
-        @self_before_instance_eval = eval('self', block.binding)
+        @self_before_instance_eval = eval('self', block.binding, __FILE__, __LINE__)
         instance_eval(&block)
       end
 
@@ -27,12 +27,6 @@ module PageObjects
       PageBinding.new(page).evaluate(&block) unless block.nil?
     end
 
-    def is_on_page?(page_klass, params = {})
-      page = page_klass.new
-      page.wait_for_page if page.respond_to?(:wait_for_page)
-      page.displayed?(params)
-    end
-
     def on_page(page_klass, params = {}, &block)
       page = page_klass.new
       expect_url_match(page, params)
@@ -41,7 +35,8 @@ module PageObjects
     end
 
     def expect_url_match(page, params)
-      expect(page).to be_displayed(params), "Expected #{current_url} to match: #{page.url_matcher}, params given: #{params}"
+      expect(page).to be_displayed(params),
+                      "Expected #{current_url} to match: #{page.url_matcher}, params given: #{params}"
     end
   end
 end
