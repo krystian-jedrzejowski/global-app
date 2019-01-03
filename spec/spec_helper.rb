@@ -38,13 +38,21 @@ AllureRSpec.configure do |config|
   config.clean_dir  = true
 end
 
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+capabilities['url'] = "http://localhost:4444/wd/hub"
+
+Capybara.register_driver :remote_browser do |app|
+  Capybara::Selenium::Driver.new(
+      app,
+    browser: :remote,
+    desired_capabilities: capabilities
+  )
 end
 
 Capybara.configure do |config|
-  config.default_driver        = :chrome
-  config.default_max_wait_time = 10
+  config.default_driver = :remote_browser
+  config.javascript_driver = :remote_browser
+  config.default_max_wait_time = 5
 end
 
 RSpec.configure do |config|

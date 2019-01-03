@@ -6,7 +6,7 @@ feature 'Login' do
   INVALID_EMAIL_MSG = 'is not a valid email'
   BLANK_PASSWORD_MSG = 'Password can not be left blank'
 
-  include_examples 'incorrect email', '', INCORRECT_EMAIL_MSG
+  include_examples 'incorrect email', ''         , INCORRECT_EMAIL_MSG
   include_examples 'incorrect email', 'test@test', INVALID_EMAIL_MSG
 
   scenario 'should show error if empty password' do
