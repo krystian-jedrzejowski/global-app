@@ -1,4 +1,4 @@
-##### To run tests locally execute following commands (assume chromedriver is installed)
+#### To run tests locally execute following commands (assume chromedriver is installed)
 ```
 bundle install
 rspec
@@ -6,7 +6,7 @@ rspec
 
 ---
 
-##### To run tests remotely execute following commands:
+#### To run tests remotely execute following commands:
 ```
 bundle install
 docker-compose up -d
@@ -14,13 +14,13 @@ DRIVER=remote_chrome rspec
 ```
 ---
 
-##### Supported drivers
+#### Supported drivers
 ```
 DRIVER=chome|remote_chrome|remote_firefox
 ```
 ---
 
-##### After test execution allure report is generated under reports/ directory. To generate pretty html report install [allure command line tool](https://docs.qameta.io/allure/#_installing_a_commandline) and execute following command:
+#### After test execution allure report is generated under reports/ directory. To generate pretty html report install [allure command line tool](https://docs.qameta.io/allure/#_installing_a_commandline) and execute following command:
 ```
 allure serve reports/allure-results
 ```
