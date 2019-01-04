@@ -1,5 +1,5 @@
 testerwork_url: 'https://testers.testerwork.com'
 mailinator_url: 'https://www.mailinator.com'
-user:
-  email: 'global-app-testing@mailinator.com'
+unconfirmed_account:
+  email: 'test@test.com'
   password: 'Test123!'
