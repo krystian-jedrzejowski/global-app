@@ -43,5 +43,7 @@ services:
       - TESTS_TO_RUN=${TESTS_TO_RUN}
     volumes:
       - .:/tests
-    command: >
-      "rspec spec/$${TESTS_TO_RUN} && allure serve reports/allure-results -p 5000"
+    command:
+      - |
+          rspec spec/$${TESTS_TO_RUN}
+          allure serve reports/allure-results -p 5000
