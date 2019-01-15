@@ -14,7 +14,7 @@ There is also [jenkins allure plugin](https://wiki.jenkins.io/display/JENKINS/Al
 
 #### To run tests on docker container execute following command:
 ```
-docker-compose run -e TESTS_TO_RUN=sign_in_spec.rb -p 5000:5000 tests
+docker-compose run -p 5000:5000 tests
 ```
 
 #### After test execution allure report is generated. Navigate to [localhost:5000](http://localhost:5000)
